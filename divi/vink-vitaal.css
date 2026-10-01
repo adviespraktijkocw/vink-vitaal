@@ -1,0 +1,407 @@
+/* ==========================================================================
+   VINK VITAAL — centraal stylesheet voor de Divi-templates
+   --------------------------------------------------------------------------
+   Waar plakken:  Divi > Thema-opties > Algemeen > Aangepaste CSS
+                  (of in style.css van een child theme)
+   Lettertypes:   zie divi/head-fonts.html (Divi > Thema-opties > Integratie)
+
+   Hoe het werkt:
+   - Elke sectie in de templates heeft de CSS-klasse "vv". Alleen binnen die
+     secties geldt deze opmaak; de rest van je site blijft ongemoeid.
+   - Kleuren en lettertypes staan hieronder als variabelen. Pas je hier één
+     waarde aan, dan verandert het op alle drie de templates tegelijk.
+   ========================================================================== */
+
+:root {
+  /* Basispalet uit VitaalLeiderschap_kleuropties.pdf */
+  --vv-antraciet: #464347;
+  --vv-creme: #EFF1E9;
+  --vv-oranje: #E18030;
+  --vv-groen: #6CA54D;
+  --vv-blauw: #286BAE;
+
+  /* Afgeleide, rustige tinten (gemengd met crème) voor kleurvlakken.
+     Briefing: "kleuren van teksten en vlakken rustig, foto's brengen kleur". */
+  --vv-creme-licht: #F7F8F3;   /* kaarten */
+  --vv-salie-licht: #DFE8D6;   /* 12% groen */
+  --vv-salie: #CEDEC2;         /* 25% groen */
+  --vv-blauw-zacht: #C7D6DD;   /* 20% blauw */
+  --vv-blauw-mid: #82A7C9;     /* grote decoratieve letters */
+  --vv-zand: #ECDAC4;          /* 20% oranje */
+  --vv-warm: #E9BE96;          /* 45% oranje, warme knop */
+  --vv-groen-diep: #4E7F36;    /* groen voor knoppen/tekst: leesbaar (AA) */
+
+  --vv-tekst: var(--vv-antraciet);
+  --vv-tekst-zacht: #66626A;
+  --vv-lijn: rgba(70, 67, 71, .18);
+
+  --vv-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --vv-sans: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  --vv-hand: 'Caveat', 'Segoe Script', cursive;
+
+  --vv-radius: 22px;
+  --vv-radius-klein: 12px;
+  --vv-schaduw: 0 18px 40px -22px rgba(70, 67, 71, .35);
+}
+
+/* ---------- Basis typografie ---------------------------------------------- */
+
+.vv {
+  font-family: var(--vv-sans);
+  color: var(--vv-tekst);
+  -webkit-font-smoothing: antialiased;
+}
+.vv .et_pb_module p,
+.vv .et_pb_module li {
+  font-family: var(--vv-sans);
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--vv-tekst);
+  font-weight: 400;
+}
+.vv .et_pb_module p { padding-bottom: 1em; }
+.vv .et_pb_module p:last-child { padding-bottom: 0; }
+.vv .et_pb_module strong { font-weight: 600; }
+
+.vv .et_pb_module h1,
+.vv .et_pb_module h2,
+.vv .et_pb_module h3 {
+  font-family: var(--vv-serif);
+  font-weight: 400;
+  color: var(--vv-tekst);
+  letter-spacing: -0.01em;
+  padding-bottom: 0;
+  margin: 0 0 .45em;
+}
+.vv .et_pb_module h1 { font-size: clamp(44px, 6vw, 84px); line-height: 1.0; }
+.vv .et_pb_module h2 { font-size: clamp(34px, 4.2vw, 58px); line-height: 1.06; }
+.vv .et_pb_module h3 { font-size: clamp(26px, 2.4vw, 34px); line-height: 1.12; }
+.vv .et_pb_module h1 em,
+.vv .et_pb_module h2 em,
+.vv .et_pb_module h3 em { font-style: italic; }
+
+/* h4 = klein "label" boven een kop (eyebrow) */
+.vv .et_pb_module h4 {
+  font-family: var(--vv-sans);
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--vv-tekst-zacht);
+  line-height: 1.4;
+  padding-bottom: 0;
+  margin: 0 0 1.1em;
+}
+.vv .et_pb_module h5 {
+  font-family: var(--vv-sans);
+  font-size: 14px; font-weight: 500;
+  color: var(--vv-tekst-zacht);
+  padding: 0; margin: 1.2em 0 0;
+}
+.vv .et_pb_module a:not(.et_pb_button) { color: var(--vv-groen-diep); }
+
+/* Hulpklassen voor tekstmodules */
+.vv .vv-hoofdletters h1, .vv .vv-hoofdletters h2 { text-transform: uppercase; letter-spacing: -0.005em; }
+.vv .vv-groen-kop h1, .vv .vv-groen-kop h2 { color: var(--vv-groen-diep); }
+.vv .vv-intro p { font-size: 19px; }
+.vv .vv-smal { max-width: 560px; }
+.vv .et_pb_text_align_center.vv-smal { margin-left: auto; margin-right: auto; }
+.vv .vv-statement h2 { font-size: clamp(32px, 3.8vw, 52px); line-height: 1.12; }
+
+/* Handgeschreven accent (Caveat): <p class="vv-hand">Welkom!</p> */
+.vv .et_pb_module .vv-hand,
+.vv .et_pb_module p.vv-hand {
+  font-family: var(--vv-hand);
+  font-size: clamp(30px, 3vw, 42px);
+  line-height: 1.1;
+  color: var(--vv-groen-diep);
+  font-weight: 500;
+  padding-bottom: .15em;
+}
+
+.vv .vv-hand-groot.et_pb_module p {
+  font-family: var(--vv-hand); font-size: clamp(34px, 4vw, 56px); line-height: 1.12;
+  color: var(--vv-groen-diep); font-weight: 500; text-shadow: 0 0 24px rgba(255,255,255,.55);
+}
+
+/* Handgetekende cirkel om een woord: <span class="vv-cirkel">woord</span> */
+.vv .vv-cirkel { position: relative; display: inline-block; white-space: nowrap; }
+.vv .vv-cirkel::after {
+  content: ""; position: absolute; left: -10%; top: -14%; width: 120%; height: 132%;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 80' preserveAspectRatio='none'%3E%3Cpath d='M30 12 C 80 -2, 175 4, 192 32 C 206 60, 140 76, 88 74 C 36 72, 4 60, 8 38 C 12 18, 52 8, 118 10' fill='none' stroke='%236CA54D' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+  pointer-events: none;
+}
+
+/* Tekst op een donkere foto */
+.vv .vv-op-foto h1, .vv .vv-op-foto h2, .vv .vv-op-foto h3,
+.vv .vv-op-foto h4, .vv .vv-op-foto p { color: #fff !important; }
+.vv .vv-op-foto h1, .vv .vv-op-foto h2 { text-shadow: 0 2px 30px rgba(0,0,0,.18); }
+
+/* ---------- Knoppen ------------------------------------------------------- */
+/* Divi-knopmodule + klasse "vv-btn" (plus eventueel een variant). */
+
+.vv .et_pb_button.vv-btn,
+.vv .et_pb_button.vv-btn:hover {
+  font-family: var(--vv-sans) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+  line-height: 1.2 !important;
+  padding: 16px 30px !important;
+  border-radius: 999px !important;
+  border: 1px solid var(--vv-groen-diep) !important;
+  background: var(--vv-groen-diep) !important;
+  color: #fff !important;
+}
+.vv .et_pb_button.vv-btn { transition: transform .25s ease, background-color .25s ease, color .25s ease, box-shadow .25s ease !important; }
+.vv .et_pb_button.vv-btn:hover {
+  background: var(--vv-antraciet) !important;
+  border-color: var(--vv-antraciet) !important;
+  transform: translateY(-2px);
+  box-shadow: var(--vv-schaduw);
+}
+.vv .et_pb_button.vv-btn::after,
+.vv .et_pb_button.vv-btn::before { display: none !important; }
+
+/* Variant: omlijnd */
+.vv .et_pb_button.vv-btn--lijn { background: transparent !important; color: var(--vv-tekst) !important; border-color: var(--vv-tekst) !important; }
+.vv .et_pb_button.vv-btn--lijn:hover { background: var(--vv-antraciet) !important; color: #fff !important; }
+/* Variant: warm (zachte oranjetint, donkere tekst) */
+.vv .et_pb_button.vv-btn--warm { background: var(--vv-warm) !important; border-color: var(--vv-warm) !important; color: var(--vv-antraciet) !important; }
+.vv .et_pb_button.vv-btn--warm:hover { background: var(--vv-antraciet) !important; border-color: var(--vv-antraciet) !important; color: #fff !important; }
+/* Variant: licht (op een foto) */
+.vv .et_pb_button.vv-btn--licht { background: var(--vv-creme) !important; border-color: var(--vv-creme) !important; color: var(--vv-antraciet) !important; }
+.vv .et_pb_button.vv-btn--licht:hover { background: #fff !important; border-color: #fff !important; color: var(--vv-antraciet) !important; }
+/* Variant: omlijnd licht (op een foto) */
+.vv .et_pb_button.vv-btn--lijn-licht { background: transparent !important; color: #fff !important; border-color: rgba(255,255,255,.8) !important; }
+.vv .et_pb_button.vv-btn--lijn-licht:hover { background: var(--vv-creme) !important; border-color: var(--vv-creme) !important; color: var(--vv-antraciet) !important; }
+/* Variant: rechthoekig (template Rust) */
+.vv .et_pb_button.vv-btn--recht { border-radius: 2px !important; }
+/* Variant: klein (topbalk) */
+.vv .et_pb_button.vv-btn--klein { padding: 11px 20px !important; font-size: 11.5px !important; }
+
+/* Kaart = tekstmodule + direct daaronder een knopmodule */
+.vv .vv-kaart {
+  background: var(--vv-creme-licht);
+  border-radius: var(--vv-radius) var(--vv-radius) 0 0;
+  padding: 44px 40px 26px;
+  margin-bottom: 0 !important;
+  text-align: center;
+}
+.vv .vv-kaart + .et_pb_button_module_wrapper {
+  background: var(--vv-creme-licht);
+  border-radius: 0 0 var(--vv-radius) var(--vv-radius);
+  padding: 4px 40px 44px;
+  margin-bottom: 0 !important;
+  text-align: center;
+}
+.vv .vv-kaart h3 { font-size: clamp(30px, 2.8vw, 40px); }
+
+/* ---------- Lopende tekstband (Code-module) -------------------------------
+   <div class="vv-band"><div class="vv-band__spoor">
+     <span>Tekst</span><span>Tekst</span> ... (2x dezelfde reeks)
+   </div></div>                                                              */
+.vv .vv-band { overflow: hidden; width: 100%; }
+.vv .vv-band__spoor {
+  display: flex; width: max-content;
+  animation: vv-band 38s linear infinite;
+}
+.vv .vv-band:hover .vv-band__spoor { animation-play-state: paused; }
+.vv .vv-band__spoor span {
+  font-family: var(--vv-serif);
+  font-size: 22px; line-height: 1;
+  text-transform: uppercase; letter-spacing: .04em;
+  color: var(--vv-tekst);
+  padding: 0 28px; white-space: nowrap;
+  display: inline-flex; align-items: center;
+}
+.vv .vv-band__spoor span::after { content: "✳"; font-size: 14px; color: var(--vv-groen); margin-left: 56px; }
+.vv .vv-band--groot .vv-band__spoor { animation-duration: 55s; }
+.vv .vv-band--groot .vv-band__spoor span { font-size: clamp(54px, 8vw, 120px); color: var(--vv-groen-diep); padding: 0 .25em; letter-spacing: -.005em; }
+.vv .vv-band--groot .vv-band__spoor span::after { content: "/"; font-size: inherit; color: var(--vv-groen); margin-left: .5em; }
+.vv .vv-band--klein .vv-band__spoor span { font-family: var(--vv-sans); font-size: 12.5px; letter-spacing: .2em; }
+@keyframes vv-band { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ---------- Beelden ------------------------------------------------------- */
+.vv .vv-beeld { margin-bottom: 0 !important; width: 100%; }
+.vv .vv-beeld .et_pb_image_wrap { display: block; width: 100%; overflow: hidden; border-radius: var(--vv-radius); }
+.vv .vv-beeld img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s ease; }
+.vv .vv-beeld:hover img { transform: scale(1.03); }
+.vv .vv-beeld--staand img { aspect-ratio: 4 / 5; }
+.vv .vv-beeld--liggend img { aspect-ratio: 4 / 3; }
+.vv .vv-beeld--hero img { aspect-ratio: 5 / 4; }
+.vv .vv-beeld--vierkant img { aspect-ratio: 1 / 1; }
+.vv .vv-beeld--boog .et_pb_image_wrap { border-radius: 999px 999px var(--vv-radius) var(--vv-radius); }
+.vv .vv-beeld--boog img { aspect-ratio: 3 / 4; }
+.vv .vv-beeld--recht .et_pb_image_wrap { border-radius: 0; }
+.vv .vv-beeld--klein .et_pb_image_wrap { border-radius: var(--vv-radius-klein); }
+
+/* Logo in de topbalk */
+.vv .vv-logo { margin-bottom: 0 !important; }
+.vv .vv-logo img { width: 150px; height: auto; }
+
+/* Zwevende kleine fotootjes (template Groei) — verdwijnen op mobiel */
+.vv .vv-zweef { position: absolute !important; z-index: 3; width: 34% !important; box-shadow: var(--vv-schaduw); border-radius: var(--vv-radius-klein); }
+.vv .vv-zweef--lb { left: -22%; top: -6%; transform: rotate(-4deg); }
+.vv .vv-zweef--rb { right: -34%; bottom: -16%; width: 30% !important; transform: rotate(3deg); }
+
+/* ---------- Draaiende badge (Code-module met <div class="vv-badge"></div>) */
+.vv .vv-badge-wrap { position: relative; height: 0; margin: 0 !important; z-index: 4; }
+.vv .vv-badge {
+  position: absolute; right: -40px; top: -60px;
+  width: 128px; height: 128px; border-radius: 50%;
+  background: var(--vv-creme) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cdefs%3E%3Cpath id='c' d='M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0'/%3E%3C/defs%3E%3Ctext font-family='DM Sans,Arial,sans-serif' font-size='17' letter-spacing='3' fill='%23464347'%3E%3CtextPath href='%23c' textLength='446' lengthAdjust='spacing'%3EOVER MIJ • VINK VITAAL • OVER MIJ • VINK VITAAL • %3C/textPath%3E%3C/text%3E%3Cpath d='M100 84 C104 94,110 98,118 100 C110 102,104 106,100 116 C96 106,90 102,82 100 C90 98,96 94,100 84Z' fill='%236CA54D'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  animation: vv-draai 22s linear infinite;
+  box-shadow: 0 10px 30px -14px rgba(70,67,71,.4);
+}
+@keyframes vv-draai { to { transform: rotate(360deg); } }
+
+/* ---------- Kaarten met citaten (ervaringen) ------------------------------ */
+.vv .vv-citaat {
+  background: var(--vv-creme-licht);
+  border-radius: var(--vv-radius);
+  padding: 34px 32px 30px;
+  height: 100%;
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+.vv .vv-citaat:hover { transform: translateY(-4px); box-shadow: var(--vv-schaduw); }
+.vv .vv-citaat h3 { font-size: 26px; line-height: 1.15; margin-bottom: .6em; }
+.vv .vv-citaat p { font-size: 15.5px; }
+.vv .vv-initialen {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--vv-salie); color: var(--vv-groen-diep);
+  font-family: var(--vv-serif); font-size: 20px; font-style: italic;
+  margin-bottom: 18px;
+}
+.vv .vv-gelijk .et_pb_column { display: flex; flex-direction: column; }
+.vv .vv-gelijk .et_pb_column > .et_pb_module:last-child { flex: 1; }
+
+/* Groot citaat (één ervaring) */
+.vv .vv-groot-citaat p:first-child {
+  font-family: var(--vv-serif); font-size: clamp(28px, 3.2vw, 44px); line-height: 1.2;
+}
+
+/* ---------- Grote typografie ---------------------------------------------- */
+.vv .vv-reuze h2 {
+  font-size: clamp(56px, 14vw, 230px) !important;
+  line-height: .86 !important;
+  text-transform: uppercase;
+  color: var(--vv-blauw-mid) !important;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  margin: 0 !important;
+}
+.vv .vv-reuze h2 em { text-transform: none; }
+
+/* ---------- Secties ------------------------------------------------------- */
+.vv .et_pb_column { position: relative; }
+.vv-hero-vol { min-height: 92vh; display: flex; flex-direction: column; justify-content: center; }
+/* Topbalk bovenin een hero-sectie */
+.vv .vv-topbalk { position: absolute !important; top: 0; left: 0; right: 0; margin: 0 auto !important; z-index: 5; }
+.vv .vv-topbalk--lijn { border-bottom: 1px solid rgba(255,255,255,.35); }
+@media (min-width: 981px) {
+  .vv .vv-midden { display: flex; align-items: center; }
+  .vv .vv-midden > .et_pb_column { float: none; }
+  .vv .vv-omlaag { margin-top: 140px; }
+}
+.vv-overlay { position: relative; }
+.vv-overlay::before {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(40,38,41,.30) 0%, rgba(40,38,41,.12) 45%, rgba(40,38,41,.38) 100%);
+}
+.vv-overlay > .et_pb_row { position: relative; z-index: 2; }
+
+.vv-hoog { min-height: 72vh; }
+.vv-overflow { overflow: hidden; }
+.vv .vv-kolom-midden { display: flex; flex-direction: column; justify-content: center; }
+.vv .vv-beeldkolom { min-height: 340px; }
+
+/* Topbalk */
+.vv .vv-menu p { font-size: 13px !important; letter-spacing: .12em; text-transform: uppercase; }
+.vv .vv-menu a { color: inherit !important; text-decoration: none; margin-right: 26px; }
+.vv .vv-merknaam p { font-family: var(--vv-serif) !important; font-size: 30px !important; line-height: 1 !important; }
+
+/* Kolommen met een dunne verticale lijn ertussen (template Rust) */
+.vv .vv-lijnkolommen > .et_pb_column:not(:last-child) { border-right: 1px solid var(--vv-lijn); }
+.vv-lijnen { border-top: 1px solid var(--vv-lijn); border-bottom: 1px solid var(--vv-lijn); }
+
+/* "Leiden vanuit —— rust" onderschrift */
+.vv .vv-lijntekst { display: flex; align-items: center; gap: 18px; font-size: 12.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--vv-tekst-zacht); }
+.vv .vv-lijntekst::before { content: none; }
+.vv .vv-lijntekst i { flex: 1; height: 1px; background: var(--vv-lijn); }
+.vv .vv-lijntekst em { font-family: var(--vv-serif); font-size: 20px; letter-spacing: .02em; text-transform: none; }
+
+/* Dienstkaart met dunne rand (template Rust) */
+.vv .vv-rand {
+  border: 1px solid var(--vv-lijn);
+  padding: 18px 18px 30px;
+  height: 100%;
+  background: rgba(255,255,255,.25);
+  transition: background-color .35s ease;
+}
+.vv .vv-rand:hover { background: rgba(255,255,255,.6); }
+.vv .vv-rand .vv-beeld { margin-bottom: 22px !important; }
+.vv .vv-dienst h3 { font-size: 26px; }
+.vv .vv-dienst p { font-size: 15.5px; }
+.vv .vv-meer a { font-size: 12.5px; letter-spacing: .16em; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 3px; }
+
+/* Stappen */
+.vv .vv-stap { border-top: 1px solid var(--vv-lijn); padding-top: 22px; }
+.vv .vv-stap .vv-nummer { display: block; font-family: var(--vv-serif); font-style: italic; font-size: 46px; line-height: 1; color: var(--vv-groen); margin-bottom: 14px; }
+.vv .vv-stap h3 { font-size: 26px; }
+.vv .vv-stap p { font-size: 15.5px; }
+
+/* Lijst met vinkjes */
+.vv .vv-vinklijst ul { list-style: none; padding: 0 !important; margin: 0 0 1.4em; }
+.vv .vv-vinklijst li { position: relative; padding: 0 0 .7em 34px; }
+.vv .vv-vinklijst li::before {
+  content: ""; position: absolute; left: 0; top: .32em; width: 20px; height: 20px; border-radius: 50%;
+  background: var(--vv-salie) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 10.5l2.6 2.6L14.5 7' fill='none' stroke='%234E7F36' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% no-repeat;
+}
+
+/* Kleine noot onder een knop */
+.vv .vv-noot p { font-size: 13.5px !important; color: var(--vv-tekst-zacht) !important; }
+
+/* ---------- Veelgestelde vragen (Divi Toggle-module + klasse vv-vraag) ---- */
+.vv .et_pb_toggle.vv-vraag {
+  background: transparent !important;
+  border: 0; border-bottom: 1px solid var(--vv-lijn);
+  padding: 26px 0; margin-bottom: 0 !important;
+}
+.vv .et_pb_toggle.vv-vraag .et_pb_toggle_title {
+  font-family: var(--vv-serif); font-size: 26px; line-height: 1.2; font-weight: 400;
+  color: var(--vv-tekst); padding: 0 48px 0 0; margin: 0; cursor: pointer; position: relative;
+}
+.vv .et_pb_toggle.vv-vraag .et_pb_toggle_title::before {
+  content: "+" !important; font-family: var(--vv-sans) !important; font-size: 26px; font-weight: 300;
+  color: var(--vv-groen-diep); position: absolute; right: 4px; top: 50%; margin-top: -.6em; line-height: 1.2;
+}
+.vv .et_pb_toggle_open.vv-vraag .et_pb_toggle_title::before { content: "–" !important; }
+.vv .et_pb_toggle.vv-vraag .et_pb_toggle_content { padding-top: 14px; }
+
+/* ---------- Responsive ---------------------------------------------------- */
+@media (max-width: 1240px) {
+  .vv .vv-zweef--rb { display: none !important; }
+}
+@media (max-width: 980px) {
+  .vv .vv-zweef { display: none !important; }
+  .vv .vv-badge { right: 10px; top: -50px; width: 104px; height: 104px; }
+  .vv .vv-lijnkolommen > .et_pb_column:not(:last-child) { border-right: 0; }
+  .vv .vv-menu { display: none; }
+  .vv .vv-reuze h2 { white-space: normal; }
+  .vv-hero-vol { min-height: 78vh; }
+  .vv .vv-kaart, .vv .vv-kaart + .et_pb_button_module_wrapper { padding-left: 26px; padding-right: 26px; }
+}
+@media (max-width: 767px) {
+  .vv .et_pb_module p, .vv .et_pb_module li { font-size: 16px; }
+  .vv .vv-intro p { font-size: 17px; }
+  .vv .vv-band__spoor span { font-size: 18px; }
+}
+
+/* Rustig voor wie beweging liever uitzet */
+@media (prefers-reduced-motion: reduce) {
+  .vv .vv-band__spoor, .vv .vv-badge { animation: none; }
+  .vv .vv-beeld img, .vv .vv-citaat, .vv .et_pb_button.vv-btn { transition: none !important; }
+}

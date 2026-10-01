@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vink Vitaal templates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=DM+Sans:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root { --antraciet:#464347; --creme:#EFF1E9; --groen:#6CA54D; --diepgroen:#4E7F36; --salie:#CEDEC2; --zand:#ECDAC4; --blauwgrijs:#C7D6DD; --kaart:#F7F8F3; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--creme); color: var(--antraciet); font-family: 'DM Sans', system-ui, sans-serif; line-height: 1.6; }
+  main { max-width: 1120px; margin: 0 auto; padding: 56px 16px 80px; }
+  .label { font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: #66626A; margin: 0 0 12px; }
+  h1 { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(40px, 6vw, 72px); line-height: 1; margin: 0 0 16px; }
+  h1 em, h2 em { font-style: italic; }
+  .intro { max-width: 620px; font-size: 17px; margin: 0 0 40px; }
+  .palet { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 48px; }
+  .palet span { display: flex; align-items: flex-end; width: 104px; height: 72px; border-radius: 12px; padding: 8px 10px; font-size: 11.5px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+  a.kaart { display: block; background: var(--kaart); border-radius: 22px; overflow: hidden; color: inherit; text-decoration: none; transition: transform .3s ease, box-shadow .3s ease; }
+  a.kaart:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -22px rgba(70,67,71,.35); }
+  .kaart .vlak { height: 180px; display: flex; align-items: center; justify-content: center; font-family: 'Instrument Serif', serif; font-size: 44px; }
+  .kaart .tekst { padding: 22px 24px 26px; }
+  .kaart h2 { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: 32px; margin: 0 0 6px; }
+  .kaart p { margin: 0 0 14px; font-size: 15px; }
+  .knop { display: inline-block; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; background: var(--diepgroen); color: #fff; padding: 12px 20px; border-radius: 999px; }
+  .hand { font-family: 'Caveat', cursive; font-size: 28px; color: var(--diepgroen); }
+</style>
+</head>
+<body>
+<main>
+  <p class="label">Vink Vitaal · Divi-templates</p>
+  <h1>Drie landingspagina's, <em>één</em> rustige stijl</h1>
+  <p class="intro">Alle drie de templates gebruiken het palet uit de kleurenopzet en zijn te importeren in de Divi Visual Builder. De foto's zijn placeholders met een label dat zegt welke foto erin hoort.</p>
+  <div class="palet">
+    <span style="background:#464347;color:#fff">Antraciet #464347</span>
+    <span style="background:#EFF1E9;border:1px solid rgba(70,67,71,.18)">Crème #EFF1E9</span>
+    <span style="background:#E18030;color:#fff">Oranje #E18030</span>
+    <span style="background:#6CA54D;color:#fff">Groen #6CA54D</span>
+    <span style="background:#286BAE;color:#fff">Blauw #286BAE</span>
+    <span style="background:#4E7F36;color:#fff">Diepgroen</span>
+    <span style="background:#CEDEC2">Salie</span>
+    <span style="background:#ECDAC4">Zand</span>
+    <span style="background:#C7D6DD">Blauwgrijs</span>
+  </div>
+  <div class="grid">
+    <a class="kaart" href="vv-template-1-groei.html">
+      <div class="vlak" style="background:var(--blauwgrijs)">Groei</div>
+      <div class="tekst"><h2>1 · Groei</h2><p>Gebaseerd op Astrid Jade en Molly Atkins: foto naast een grote kop, een lopende tekstband, aanbodkaarten op foto's en ervaringen.</p><span class="knop">Bekijk template →</span></div>
+    </a>
+    <a class="kaart" href="vv-template-2-natuur.html">
+      <div class="vlak" style="background:var(--salie)"><span class="hand">Welkom!</span>&nbsp;Natuur</div>
+      <div class="tekst"><h2>2 · Natuur</h2><p>Gebaseerd op Etta's Acres: volle natuurfoto, een persoonlijk welkom met handschrift, een grote tekstband en een gratis gids.</p><span class="knop">Bekijk template →</span></div>
+    </a>
+    <a class="kaart" href="vv-template-3-rust.html">
+      <div class="vlak" style="background:var(--zand)">Rust</div>
+      <div class="tekst"><h2>3 · Rust</h2><p>Gebaseerd op August: strak en rustig met dunne lijnen, werkwijze in stappen, veelgestelde vragen en optioneel een video bovenaan.</p><span class="knop">Bekijk template →</span></div>
+    </a>
+  </div>
+</main>
+</body>
+</html>
