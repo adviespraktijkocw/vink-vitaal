@@ -18,7 +18,7 @@ Deze punten zitten in alle drie de templates verwerkt:
 
 | Feedback | Zo zit het erin |
 |---|---|
-| *Jill van den Bosch: kleuren te donker* · *Scalable Coach: zwart-wit niet leuk* | Geen zwart en geen fel wit. De basis is crème `#EFF1E9`, de tekst antraciet `#464347` en de kleurvlakken zijn zachte tinten. |
+| *Jill van den Bosch: kleuren te donker* · *Scalable Coach: zwart-wit niet leuk* | Geen zwart en geen fel wit. De basis is crème `#EFF1E9` en de tekst antraciet `#464347`. Groen, oranje en blauw komen puur terug als accenten, met per template één groot blauw vlak; de overige vlakken zijn zachte tinten. |
 | *Kristin Webster / Madison Arnholt: kleuren mooi, vriendelijk* | Salie-, zand- en blauwgrijze vlakken, ronde vormen en zachte schaduwen. |
 | *Grace Brodeur: zachte beelden* · briefing: *foto's brengen de kleur* | De kleur komt uit natuur- en zonbeelden, en de vlakken blijven rustig. |
 | *Esther Perel: te druk, niet persoonlijk, niet warm* | Eén boodschap per sectie, veel witruimte, de coach vroeg in beeld, "ik/jij"-taal en handgeschreven accenten. |
@@ -27,17 +27,24 @@ Deze punten zitten in alle drie de templates verwerkt:
 
 ## Kleuren
 
-**Basispalet (uit de pdf):**
+**Basispalet (uit de pdf), alle vijf puur gebruikt:**
 
-| Naam | Hex | Gebruik |
+| Naam | Hex | Waar je hem ziet |
 |---|---|---|
-| Antraciet | `#464347` | tekst |
+| Antraciet | `#464347` | alle tekst |
 | Crème | `#EFF1E9` | achtergrond |
-| Oranje | `#E18030` | alleen als afgeleide tint (zand/warm) |
-| Groen | `#6CA54D` | accenten, lijnen, iconen |
-| Blauw | `#286BAE` | alleen als afgeleide tint (blauwgrijs) |
+| Groen | `#6CA54D` | de lopende tekstband, vinkjes, lijnen boven de stappen, de cijfers |
+| Oranje | `#E18030` | de warme knoppen, het hover-effect van alle knoppen, het cirkeltje om een woord, de sterretjes en schuine strepen in de banden, het sterretje in de badge, onderstrepingen van "meer"-links |
+| Blauw | `#286BAE` | de kleine labels boven koppen, de grote letters "START JOUW TRAJECT", en per template één blauw vlak (met witte tekst) |
 
-**Afgeleide tinten.** Volgens de briefing moeten tekst en kleurvlakken rustig blijven, dus zijn de felle kleuren met crème gemengd:
+Groen, oranje en blauw zijn accenten: ze komen terug, maar nooit allemaal tegelijk in één groot vlak. Zo blijft het rustig.
+
+**Leesbaarheid.** Niet elke paletkleur is geschikt voor tekst (norm: contrast 4,5):
+- Witte tekst op het pdf-groen haalt maar 2,9. Knoppen en groene koppen zijn daarom diepgroen `#4E7F36` (4,8).
+- Op oranje staat altijd donkere tekst `#2B282C` (5,1). Witte tekst op oranje zou 2,9 halen.
+- Witte tekst op blauw haalt 5,5, dat is prima. Blauwe labels op crème halen 4,8. Op de getinte vlakken (salie, zand) is blauw te licht voor kleine tekst; daar worden de labels automatisch antraciet.
+
+**Afgeleide tinten** voor de rustige kleurvlakken (de felle kleuren gemengd met crème):
 
 | Naam | Hex | Gebruik |
 |---|---|---|
@@ -46,7 +53,6 @@ Deze punten zitten in alle drie de templates verwerkt:
 | Salie licht | `#DFE8D6` | kleurvlak (12% groen) |
 | Blauwgrijs | `#C7D6DD` | kleurvlak (20% blauw) |
 | Zand | `#ECDAC4` | kleurvlak (20% oranje) |
-| Warm | `#E9BE96` | warme knop met donkere tekst |
 | Crème licht | `#F7F8F3` | kaarten |
 
 ## Lettertypes
@@ -72,7 +78,7 @@ De opmaak geldt alleen voor secties met de klasse `vv`, dus de rest van je site 
 
 ### Stap 3 (aanrader): Paletkleuren in Divi zetten
 **Divi → Thema-opties → Algemeen → "Standaardpalet kleurkiezers"**
-Vul in: `#464347` `#EFF1E9` `#4E7F36` `#6CA54D` `#CEDEC2` `#ECDAC4` `#C7D6DD` `#E9BE96`.
+Vul in: `#464347` `#EFF1E9` `#6CA54D` `#E18030` `#286BAE` `#4E7F36` `#CEDEC2` `#ECDAC4`.
 Dan heb je deze kleuren met één klik bij de hand in de Visual Builder.
 
 ### Stap 4: Een template op een pagina zetten
@@ -109,7 +115,7 @@ In elke module: **Geavanceerd → CSS-ID & klassen → CSS-klasse**.
 | `vv` | **elke sectie** | zet de Vink Vitaal-opmaak aan (verplicht!) |
 | `vv-btn` | knop | standaardknop, diepgroen en rond |
 | `vv-btn vv-btn--lijn` | knop | omlijnde knop |
-| `vv-btn vv-btn--warm` | knop | zachte oranje knop |
+| `vv-btn vv-btn--warm` | knop | oranje knop met donkere tekst |
 | `vv-btn vv-btn--licht` / `--lijn-licht` | knop | voor op een foto |
 | `vv-btn vv-btn--recht` | knop | rechte hoeken (template Rust) |
 | `vv-beeld vv-beeld--staand` | afbeelding | ronde hoeken, 4:5 |
@@ -117,9 +123,10 @@ In elke module: **Geavanceerd → CSS-ID & klassen → CSS-klasse**.
 | `vv-kaart` | tekst (+ knop direct eronder) | witte kaart |
 | `vv-citaat` | tekst | ervaringskaart |
 | `vv-hoofdletters` | tekst | koppen in hoofdletters |
-| `vv-op-foto` | tekst | witte tekst op een foto |
+| `vv-op-foto` | tekst | witte tekst op een foto of op het blauwe vlak |
 | `vv-overlay` | sectie | zachte donkere laag over de achtergrondfoto |
 | `vv-lijnen` | sectie | dunne lijn boven en onder |
+| `vv-band-groen` | sectie (groene achtergrond) | witte tekst in de lopende band |
 | `vv-vraag` | toggle | veelgestelde vraag |
 
 ---

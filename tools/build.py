@@ -31,6 +31,10 @@ KLEUR = {
     "blauw_zacht": "#C7D6DD",
     "hemel": "#DBE4E3",
     "zand": "#ECDAC4",
+    # basispalet (puur)
+    "groen": "#6CA54D",
+    "blauw": "#286BAE",
+    "oranje": "#E18030",
 }
 
 
@@ -120,6 +124,9 @@ class Row:
 
 class Section:
     def __init__(self, rows, cls="", bg=KLEUR["creme"], bg_img=None, padding=(100, 100), padding_phone=None, admin=""):
+        # Op getinte vlakken worden de blauwe labels (h4) antraciet: leesbaarder.
+        if bg in (KLEUR["hemel"], KLEUR["salie"], KLEUR["salie_licht"], KLEUR["zand"], KLEUR["blauw_zacht"]):
+            cls = f"{cls} vv-tint".strip()
         self.rows, self.cls, self.bg, self.bg_img = rows, cls, bg, bg_img
         self.padding = padding
         self.padding_phone = padding_phone or (min(padding[0], 64), min(padding[1], 64))
@@ -375,8 +382,8 @@ def band(woorden, variant=""):
     return Code(f'<div class="vv-band {variant}" aria-hidden="true"><div class="vv-band__spoor">{spans}</div></div>')
 
 
-def citaat(initialen, kop, tekst, naam):
-    return Text(f'<span class="vv-initialen">{initialen}</span><h3>{kop}</h3><p>{tekst}</p><h5>— {naam}</h5>',
+def citaat(initialen, kop, tekst, naam, kleur="groen"):
+    return Text(f'<span class="vv-initialen vv-initialen--{kleur}">{initialen}</span><h3>{kop}</h3><p>{tekst}</p><h5>— {naam}</h5>',
                 cls="vv-citaat")
 
 
@@ -412,7 +419,7 @@ def template_groei():
                  Button("Start jouw traject →")],
                 cls="vv-midden", width="88%", max_width="1240px"),
         ]),
-        Section(admin="Lopende band", bg=KLEUR["creme_licht"], cls="vv-lijnen", padding=(20, 20), padding_phone=(16, 16), rows=[
+        Section(admin="Lopende band", bg=KLEUR["groen"], cls="vv-band-groen", padding=(20, 20), padding_phone=(16, 16), rows=[
             kol("4_4", [band(["Vitaal leiderschap", "Meer energie", "Rust in je hoofd", "Leiden vanuit jezelf", "Balans in werk en leven"])],
                 width="100%", max_width="100%"),
         ]),
@@ -458,16 +465,16 @@ def template_groei():
                 [citaat("A", "“Ik weet weer waar ik naartoe wil, en het voelt licht.”",
                         "Ik liep vast in een agenda vol verwachtingen. Nu kies ik bewuster en heb ik ’s avonds weer energie over.", "Naam klant, teamleider")],
                 [citaat("B", "“Ik ben gestopt met duwen. Alles kwam in beweging.”",
-                        "Ik dacht dat harder werken de oplossing was. Ik leerde mijn grenzen voelen en mijn team meer vertrouwen.", "Naam klant, manager")],
+                        "Ik dacht dat harder werken de oplossing was. Ik leerde mijn grenzen voelen en mijn team meer vertrouwen.", "Naam klant, manager", "oranje")],
                 [citaat("C", "“Ik leid weer vanuit rust in plaats van vanuit stress.”",
-                        "Praktisch, warm en eerlijk. Ik merk het verschil in mijn gesprekken, mijn slaap en mijn plezier in het werk.", "Naam klant, directeur")],
+                        "Praktisch, warm en eerlijk. Ik merk het verschil in mijn gesprekken, mijn slaap en mijn plezier in het werk.", "Naam klant, directeur", "blauw")],
                 cls="vv-gelijk", equal=True),
             kol("4_4", [Button("Lees alle ervaringen", align="center", variant="lijn")], padding=(40, 0)),
         ]),
         Section(admin="Jouw verandering", bg=KLEUR["creme"], padding=(0, 0), padding_phone=(0, 0), rows=[
             Row([
                 Col("1_2", [Image(img("vv-werk-gesprek.jpg"), "Coachgesprek aan tafel", cls="vv-beeld vv-beeld--liggend")],
-                    bg=KLEUR["blauw_zacht"], cls="vv-kolom-midden", padding=(100, 100, "12%", "12%"), padding_phone=(48, 48, "6%", "6%")),
+                    bg=KLEUR["blauw"], cls="vv-kolom-midden", padding=(100, 100, "12%", "12%"), padding_phone=(48, 48, "6%", "6%")),
                 Col("1_2", [Text(f"""
 <h4>Het traject</h4>
 <h2>Van <em>overleven</em> naar vitaal leiden</h2>
@@ -481,7 +488,7 @@ def template_groei():
             kol("4_4", [
                 Text("<h4>Kennismaken</h4><h2>Klaar voor meer <em>rust</em> en <em>energie</em>?</h2><p>Plan een vrijblijvend gesprek. We kijken samen waar je nu staat en wat jou verder helpt.</p>",
                      center=True),
-                Button("Plan een kennismaking →", align="center", margin=(30, 18)),
+                Button("Plan een kennismaking →", align="center", variant="warm", margin=(30, 18)),
                 Text("<p>Gratis · 30 minuten · online of in de praktijk</p>", cls="vv-noot", center=True),
             ], max_width="760px"),
         ]),
@@ -545,11 +552,11 @@ def template_natuur():
                  Text('<h3>Workshops &amp; lezingen</h3><p>Inspirerende sessies voor teams en organisaties over vitaliteit, werkplezier en duurzaam presteren.</p><p class="vv-meer"><a href="#">Vraag een workshop aan</a></p>', cls="vv-dienst", center=True, margin=(26, 0))],
                 gutter=4),
         ]),
-        Section(admin="Ervaring (groot citaat)", bg=KLEUR["salie_licht"], padding=(120, 120), rows=[
+        Section(admin="Ervaring (groot citaat)", bg=KLEUR["blauw"], padding=(120, 120), rows=[
             kol("4_4", [Text("""
 <p>“Ik kwam binnen met een volle agenda en een leeg gevoel. Nu kies ik weer bewust, en mijn team merkt het ook.”</p>
 <p class="vv-hand">Naam klant, teamleider</p>
-""", cls="vv-groot-citaat", center=True)], max_width="900px"),
+""", cls="vv-groot-citaat vv-op-foto", center=True)], max_width="900px"),
         ]),
         Section(admin="Werkwijze", bg=KLEUR["creme"], padding=(110, 110), rows=[
             kol("4_4", [Text("<h4>Zo werkt het</h4><h2>In drie stappen naar meer <em>vitaliteit</em></h2>", center=True)], max_width="900px", padding=(0, 50)),
@@ -594,7 +601,7 @@ def template_rust():
                 Button("Plan een kennismaking", align="center", variant="licht recht", margin=(28, 0)),
             ], max_width="880px"),
         ]),
-        Section(admin="Lopende band", bg=KLEUR["creme"], cls="vv-lijnen", padding=(20, 20), padding_phone=(16, 16), rows=[
+        Section(admin="Lopende band", bg=KLEUR["groen"], cls="vv-band-groen", padding=(20, 20), padding_phone=(16, 16), rows=[
             kol("4_4", [band(["Leiden vanuit rust"] * 5)], width="100%", max_width="100%"),
         ]),
         Section(admin="Kernboodschap", bg=KLEUR["salie_licht"], padding=(130, 130), rows=[
@@ -654,11 +661,11 @@ def template_rust():
                  Toggle("Kan mijn werkgever het traject betalen?", "<p>Vaak wel. Coaching valt regelmatig onder het opleidings- of vitaliteitsbudget. Ik denk graag mee over een voorstel.</p>", cls="vv-vraag"),
                  Toggle("Werk je online of op locatie?", "<p>Allebei. Veel klanten kiezen voor een mix, en een wandelcoachsessie in de natuur is ook mogelijk.</p>", cls="vv-vraag")]),
         ]),
-        Section(admin="Afsluitende oproep", bg=KLEUR["blauw_zacht"], padding=(120, 120), rows=[
+        Section(admin="Afsluitende oproep", bg=KLEUR["blauw"], padding=(120, 120), rows=[
             kol("4_4", [
-                Text("<h2>Klaar om te <em>beginnen</em>?</h2><p>Plan een kennismaking en ontdek wat coaching voor jou kan betekenen.</p>", center=True),
-                Button("Plan een kennismaking", align="center", variant="recht", margin=(30, 18)),
-                Text("<p>Gratis en vrijblijvend · 30 minuten</p>", cls="vv-noot", center=True),
+                Text("<h2>Klaar om te <em>beginnen</em>?</h2><p>Plan een kennismaking en ontdek wat coaching voor jou kan betekenen.</p>", cls="vv-op-foto", center=True),
+                Button("Plan een kennismaking", align="center", variant="warm recht", margin=(30, 18)),
+                Text("<p>Gratis en vrijblijvend · 30 minuten</p>", cls="vv-noot vv-op-foto", center=True),
             ], max_width="720px"),
         ]),
     ]
